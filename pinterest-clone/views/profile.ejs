@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+          <div class="profile-picture">
+            <img src="https://i.pinimg.com/280x280_RS/fe/7d/ee/fe7deef834e1fafe56f8023ced803ca9.jpg" alt="Profile Picture">
+          </div>
+          <h2 class="name"><%=user.fullname %></h2>
+          <h3 class="username">@<%= user.username%></h3>
+          <p class="tagline">Keep going.</p>
+          <p class="description">Lorem ipsum dolor sit amet.</p>
+          <a href="/logout" class="button">Logout</a>
+
+          <!-- to upload files  -->
+          
+          <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="text" name="filecaption" placeholder="give caption">
+            <input type="file" name="file">
+            <button type="submit">Upload</button>
+          </form>
+        </div>
+    </div>
+
+   <div class="container">
+    <div class="cards flex">
+      <% user.posts.forEach(function(post){ %>
+        <div class="card" style="width: 18rem;">
+          <img src="/images/uploads/<%=post.image %>" alt="pic">
+          <div class="card-body">
+            <h5 class="card-title"><%=post.imageText %></h5>
+            <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+          </div>
+        </div>
+      <% }) %>
+    </div>
+    
+   </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+</body>
+</html>
